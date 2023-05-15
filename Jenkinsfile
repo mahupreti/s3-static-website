@@ -13,7 +13,7 @@ pipeline{
 		stage ('Test'){
 			steps {
 				echo "Testing stage"
-				sh ' aws ec2 describe-instances'
+				
 			}
 		}
 		stage ('Deploy to S3'){ 
@@ -23,6 +23,14 @@ pipeline{
 			} 
 		}
 		
-		}
 	}
 	
+	post{
+		success {
+			echo "success"
+		}
+		failure {
+			echo "failure"
+		}
+	}
+}
