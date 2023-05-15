@@ -16,12 +16,7 @@ pipeline{
 				sh ' aws ec2 describe-instances'
 			}
 		}
-		stage ('Deploy to S3'){
-			steps{
-				echo "Deploying"
-				sh ' aws s3 cp .index.html s3://mupreti.com.np
-			}
-		}
+		
 		}
 	}
 	
