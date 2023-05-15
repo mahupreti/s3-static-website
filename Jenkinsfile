@@ -1,5 +1,9 @@
 pipeline{
 	agent any 
+	environment {
+	AWS_DEFAULT_REGION = "us-east-1"
+	THE_BUTLER_SAYS_SO = credentials('
+	}
 	stages {
 		stage ('Build'){
 			steps {
@@ -9,14 +13,13 @@ pipeline{
 		stage ('Test'){
 			steps {
 				echo "Testing stage"
+				sh ' aws ec2 describe-instances'
 			}
 		}
 		stage ('Deploy to S3'){
 			steps{
 				echo "Deploying"
-				withAWS(credentials: 'aws-credentials', region: 'us-east-1') {
-				sh 'aws s3 cp ./index.html s3://mupreti.com.np'
-				}
+				sh ' aws s3 cp .index/html s3://mupreti.com.np
 			}
 		}
 		}
