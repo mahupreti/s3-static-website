@@ -19,7 +19,7 @@ pipeline{
 		stage ('Deploy to S3'){
 			steps{
 				echo "Deploying"
-				sh ' aws s3 cp .index/html s3://mupreti.com.np
+				sh ' aws s3 cp .index.html s3://mupreti.com.np
 			}
 		}
 		}
